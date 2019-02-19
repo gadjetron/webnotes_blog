@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&amp;subset=cyrillic" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/global_styles.css' %} ">
+    <title>Webnotes Blog</title>
+
+    <style>
+        *{
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar + short site description -->
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top">
+            <a class="navbar-brand text-light">WebNotes</a>
+            <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div id="my-nav" class="collapse navbar-collapse mr-auto">
+                <div class="navbar-nav">
+                </div>
+            </div>
+        </nav>
+
+        <!-- Short site description -->
+        <div class="jumbotron rounded px-3 pt-5 pb-2 mt-1 mb-1">
+            <div class="text-center">
+                <h1 class="mb-4">
+                    <span style="color: #faa115;">WebNotes</span> - web developer swiss army knife
+                </h1>
+                <p class="lead mb-4">
+                    Here you will find interesting articles about web development
+                    with Python, Django, HTML5, CSS3 and JavaScript.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div id="content-browser-area" class="d-flex justify-content-center border border-primary rounded text-center mb-1 p-2">
+        <h1> Content browser area</h1>
+    </div>
+
+    <!-- Social links -->
+    <footer>
+        <div class="d-flex flex-column bg-dark rounded p-2">
+            <h5 class="text-light text-center my-2">
+                You can find us in social nets:
+            </h5>
+            <div class="d-flex justify-content-center">
+                <a href="https://www.vk.com">
+                    <i class="fab fa-vk fa-2x rounded m-2 p-2"
+                        style="background: #4c75a3; color: #fffefb;"></i>
+                </a>
+                <a href="https://www.facebook.com">
+                    <i class="fab fa-facebook fa-2x rounded m-2 p-2"
+                        style="background: #28aae1; color: #ffffff;"></i>
+                </a>
+                <a href="https://www.twitter.com">
+                    <i class="fab fa-twitter fa-2x rounded m-2 p-2"
+                    style="background: #28aae1; color: #ffffff;"></i>
+                </a>
+                <a href="https://www.instagram.com">
+                    <i class="fab fa-instagram fa-2x rounded m-2 p-2"
+                    style="background: #ffffff; color: #f8390b;"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+</body>
+</html>
