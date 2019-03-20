@@ -1,0 +1,17 @@
+<article>
+    <section class="article-publication-info border-bottom border-dark p-3 mb-2">
+        <p class="text-right h6">
+            <span class="font-weight-bold">Date:</span> {{article.publication_date}}
+        </p>
+        <p class="text-right h6">
+            <span class="font-weight-bold">Authors:</span>
+            {% for author in article.authors.all %}
+                {{author}}
+            {% endfor %}
+        </p>
+    </section>
+    <section class="article-content">
+        <h3 class="article-header">{{article.header}}</h3>
+        {{article.content}}
+    </section>
+</article>
