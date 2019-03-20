@@ -4,6 +4,7 @@ from django.contrib.auth.models import User as UserModel
 from django.db import models
 from django.utils import timezone
 from django.utils.lorem_ipsum import paragraphs as lorem_ipsum_paragraphs
+from django.urls import reverse
 
 
 class Author(UserModel):
@@ -31,3 +32,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.header
+
+    def get_absolute_url(self):
+        return reverse('article', kwargs={'pk': self.pk})
