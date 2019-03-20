@@ -75,5 +75,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <script src="{% static 'content_browser/js/content_browser.js' %}"></script>
+
+    <script>
+        $('a.article-link').on("click", (event) => {
+            event.preventDefault();
+
+            let article_url = event.target.href;
+            content_browser.load_article(article_url);
+        })
+    </script>
 </body>
 </html>
