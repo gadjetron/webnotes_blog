@@ -15,11 +15,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
 
-from webnotes_blog import views as top_level_views
+from . import views as top_level_views
+from content_browser.urls import content_browser_urlpatterns
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', top_level_views.home_page, name='home')
-]
+] + content_browser_urlpatterns
