@@ -1,5 +1,15 @@
 <div id="content-browser-area"
     class="d-flex flex-column text-center mb-1 p-2 border-top border-bottom border-dark">
+    <div id="search-form" class="d-flex flex-column mb-2 w-100">
+        <form method="GET" action="{% url 'search' %}">
+            {% csrf_token %}
+            <input type="search" name="query_string" required
+                class="form-control form-control-lg border-dark"
+                id="search_input" placeholder="Type text and press Enter..."
+                minlength="3" maxlength="150">
+        </form>
+    </div>
+
     <!-- Tabs for all articles, opened articles and for showing search results -->
     <ul class="nav nav-pills nav-fill border-bottom border-dark pb-2" id="content-browser">
         <li class="nav-item tab">
@@ -26,6 +36,7 @@
             {% include 'content_browser/opened_articles_tab.html' %}
         </div>
         <div class="tab-pane fade" id="search-results-tab">
+            {% include 'content_browser/search_results_tab.html' %}
         </div>
     </div>
 </div>
