@@ -1,0 +1,41 @@
+#all-articles-container, #opened-article-container, #search-results-container{
+    height: 25em;
+    overflow-y: scroll;
+}
+
+#all-articles-container, #search-results-container{
+    display: grid;
+    grid-gap: 0.3em;
+    grid-row: 1 / -1;
+}
+
+@media screen and (min-width: 320px) and (max-width: 489px){
+    #all-articles-container, #search-results-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media screen and (min-width: 490px) and (max-width: 769px){
+    #all-articles-container, #search-results-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (min-width: 770px) and (max-width: 1000px){
+    #all-articles-container, #search-results-container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media screen and (min-width: 1001px) and (max-width: 1300px){
+    #all-articles-container, #search-results-container{
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+@media screen and (min-width: 1301px) and (max-width: 1800px){
+    #all-articles-container, #search-results-container{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media screen and (min-width: 1801px){
+    #all-articles-container, #search-results-container{
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
