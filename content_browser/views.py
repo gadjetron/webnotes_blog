@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, Http404
 from django.template import loader
 
@@ -18,8 +18,15 @@ def get_article_content(request, id):
     return HttpResponse(article_html_string)
 
 
-def get_more_articles(request, fetch_count=10):
-    pass
+def get_more_articles(request):
+    fetch_count = int(request.GET['fetch_count'])
+    loaded_articles_count = int(request.GET['loaded_articles_count'])
+
+    articles = Article.objects.all()[loaded_articles_count:
+                                     loaded_articles_count + fetch_count]
+
+    return render(request, 'content_browser/articles_batch_response.html',
+                  {'articles': articles})
 
 
 def search(request, query_string, fetch_count=10):
