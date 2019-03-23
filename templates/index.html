@@ -83,6 +83,13 @@
             let article_url = event.target.href;
             content_browser.load_article(article_url);
         })
+
+        $("#load-more-articles-button").on('click', (event) => {
+            event.preventDefault();
+
+            let fetch_count = parseInt($("select#articles-fetch-count").val());
+            content_browser.load_more_articles(fetch_count);
+        });
     </script>
 </body>
 </html>
