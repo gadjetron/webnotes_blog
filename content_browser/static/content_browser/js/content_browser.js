@@ -13,6 +13,11 @@ class ContentBrowser {
         this.active_tab = this.tabs["all-articles"];
 
         this.opened_article_container = $("#opened-articles-tab #opened-article-container");
+        this.all_articles_container = $("#all-articles-tab #all-articles-container");
+
+        this.loaded_articles_count = () => {
+            return $("#all-articles-container article").length;
+        }
     }
 
     activate_tab(tab_name) {
@@ -33,6 +38,21 @@ class ContentBrowser {
             success: (response) => {
                 this.activate_tab("opened-articles");
                 this.opened_article_container.html(response);
+            }
+        });
+    }
+
+    load_more_articles(fetch_count) {
+        $.ajax({
+            url: '/articles/load_more',
+            type: 'GET',
+            dataType: 'html',
+            data: {
+                'loaded_articles_count': this.loaded_articles_count(),
+                'fetch_count': fetch_count
+            },
+            success: (response) => {
+                this.all_articles_container.prepend(response);
             }
         });
     }
