@@ -52,7 +52,7 @@ class ContentBrowser {
                 'fetch_count': fetch_count
             },
             success: (response) => {
-                this.all_articles_container.prepend(response);
+                this.all_articles_container.append(response);
             }
         });
     }
