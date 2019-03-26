@@ -134,6 +134,10 @@
             content_browser.search_articles(query_string);
         });
 
+        observed_node = document.querySelector("#search-results-container");
+        let search_results_tab_observer = new MutationObserver(observer_callback);
+        search_results_tab_observer.observe(observed_node, observer_config);
+
         // End of 'Search results' tab code
     </script>
 </body>
