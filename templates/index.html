@@ -127,6 +127,13 @@
             }
         });
 
+        $("#search-form form").on('submit', (event) => {
+            event.preventDefault();
+
+            let query_string = search_input.val().trim();
+            content_browser.search_articles(query_string);
+        });
+
         // End of 'Search results' tab code
     </script>
 </body>
