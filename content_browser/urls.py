@@ -8,7 +8,7 @@ urlpatterns = [
     re_path(r'^articles/load_more', cb_views.get_more_articles,
             name="load_more_articles"),
 
-    re_path(r'^search/', cb_views.search, name="search"),
+    re_path(r'^search', cb_views.search, name="search"),
     re_path(r'^search/load_more', cb_views.search,
             name="load_more_search_results")
 ]
