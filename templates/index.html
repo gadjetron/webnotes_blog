@@ -77,6 +77,8 @@
     <script src="{% static 'content_browser/js/content_browser.js' %}"></script>
 
     <script>
+        // 'All articles' tab code
+
         let set_article_link_click_handler = () => {
             $('a.article-link').on("click", (event) => {
                 event.preventDefault();
@@ -105,6 +107,27 @@
             let fetch_count = parseInt($("select#articles-fetch-count").val());
             content_browser.load_more_articles(fetch_count);
         });
+        // End of 'All articles' tab code
+
+        // 'Search results' tab code
+
+        let search_input = $("#search-form #search_input");
+
+        search_input.on('input', function(){
+            this.setCustomValidity('');
+            this.checkValidity('');
+        });
+
+        search_input.on('invalid', function(){
+            if (!this.value){
+                this.setCustomValidity('Empty query string!');
+            }
+            else {
+                this.setCustomValidity('Query string must start with word char ([A-Z a-z 0-9 _])!');
+            }
+        });
+
+        // End of 'Search results' tab code
     </script>
 </body>
 </html>
