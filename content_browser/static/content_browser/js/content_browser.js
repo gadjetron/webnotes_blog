@@ -18,6 +18,8 @@ class ContentBrowser {
         this.loaded_articles_count = () => {
             return $("#all-articles-container article").length;
         }
+
+        this.search_results_container = $("#search-results-tab #search-results-container");
     }
 
     activate_tab(tab_name) {
@@ -53,6 +55,24 @@ class ContentBrowser {
             },
             success: (response) => {
                 this.all_articles_container.append(response);
+            }
+        });
+    }
+
+    search_articles(query_string) {
+        this.search_results_container.html('');
+
+        $.ajax({
+            type: "GET",
+            url: "/search",
+            data: {
+                'query_string': query_string,
+                'fetch_count': 10
+            },
+            dataType: "html",
+            success: (response) => {
+                this.activate_tab("search-results");
+                this.search_results_container.append(response);
             }
         });
     }
