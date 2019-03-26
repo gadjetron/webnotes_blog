@@ -29,5 +29,11 @@ def get_more_articles(request):
                   {'articles': articles})
 
 
-def search(request, query_string, fetch_count=10):
-    pass
+def search(request):
+    query_string = request.GET['query_string']
+    fetch_count = int(request.GET['fetch_count'])
+
+    search_results = Article.objects.filter(header__icontains=query_string)[:fetch_count]
+
+    return render(request, 'content_browser/articles_batch_response.html',
+                  {'articles': search_results})
