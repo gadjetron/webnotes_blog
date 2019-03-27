@@ -37,3 +37,15 @@ def search(request):
 
     return render(request, 'content_browser/articles_batch_response.html',
                   {'articles': search_results})
+
+
+def search_more(request):
+    query_string = request.GET['last_search_query_string']
+    search_loaded_articles_count = int(request.GET['search_loaded_articles_count'])
+    fetch_count = int(request.GET['fetch_count'])
+
+    search_results = Article.objects.filter(header__icontains=query_string)[
+        search_loaded_articles_count: search_loaded_articles_count + fetch_count]
+
+    return render(request, 'content_browser/articles_batch_response.html',
+                  {'articles': search_results})
