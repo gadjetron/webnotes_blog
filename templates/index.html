@@ -138,6 +138,13 @@
         let search_results_tab_observer = new MutationObserver(observer_callback);
         search_results_tab_observer.observe(observed_node, observer_config);
 
+        $("#search-more-articles-button").on('click', (event) => {
+            event.preventDefault();
+
+            let fetch_count = parseInt($("select#search-fetch-count").val());
+            content_browser.search_more(fetch_count);
+        });
+
         // End of 'Search results' tab code
     </script>
 </body>
