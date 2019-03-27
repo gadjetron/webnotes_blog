@@ -20,6 +20,11 @@ class ContentBrowser {
         }
 
         this.search_results_container = $("#search-results-tab #search-results-container");
+        this.last_search_query_string = '';
+
+        this.search_loaded_articles_count = () => {
+            return $("#search-results-container article").length;
+        }
     }
 
     activate_tab(tab_name) {
@@ -61,6 +66,7 @@ class ContentBrowser {
 
     search_articles(query_string) {
         this.search_results_container.html('');
+        this.last_search_query_string = query_string;
 
         $.ajax({
             type: "GET",
@@ -72,6 +78,22 @@ class ContentBrowser {
             dataType: "html",
             success: (response) => {
                 this.activate_tab("search-results");
+                this.search_results_container.append(response);
+            }
+        });
+    }
+
+    search_more(fetch_count) {
+        $.ajax({
+            type: "GET",
+            url: "/search/load_more",
+            data: {
+                'last_search_query_string': this.last_search_query_string,
+                'search_loaded_articles_count': this.search_loaded_articles_count(),
+                'fetch_count': fetch_count
+            },
+            dataType: "html",
+            success: (response) => {
                 this.search_results_container.append(response);
             }
         });
