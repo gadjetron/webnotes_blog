@@ -141,8 +141,17 @@
         $("#search-more-articles-button").on('click', (event) => {
             event.preventDefault();
 
-            let fetch_count = parseInt($("select#search-fetch-count").val());
-            content_browser.search_more(fetch_count);
+            if (content_browser.last_search_query_string !== null){
+                let fetch_count = parseInt($("select#search-fetch-count").val());
+                content_browser.search_more(fetch_count);
+            }
+            else {
+                $(".alert-search-before-loading-more").toggleClass('d-none show');
+
+                setTimeout(() => {
+                    $(".alert-search-before-loading-more").toggleClass('d-none show');
+                }, 3000);
+            }
         });
 
         // End of 'Search results' tab code

@@ -20,7 +20,7 @@ class ContentBrowser {
         }
 
         this.search_results_container = $("#search-results-tab #search-results-container");
-        this.last_search_query_string = '';
+        this.last_search_query_string = null;
 
         this.search_loaded_articles_count = () => {
             return $("#search-results-container article").length;
