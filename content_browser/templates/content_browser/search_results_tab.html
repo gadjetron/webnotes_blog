@@ -1,19 +1,24 @@
 <div id="search-results-container" class="border-bottom border-dark py-1 mb-2">
 </div>
-<div id="search-settings" class="d-flex justify-content-center">
-    <div class="mr-3">
-        <span>Fetch count</span>
-        <select class="form-control" id="search-fetch-count">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
+<div class="d-flex flex-column align-items-center">
+    <div class="alert alert-warning alert-search-before-loading-more fade d-none text-center" role="alert">
+        <strong class="text-danger">Search anything before loading more!</strong>
     </div>
-    <button id="search-more-articles-button" class="btn btn-primary p-3">
-        <a href="{% url 'load_more_search_results' %}" class="text-light font-weight-bold h5">
-            Load more
-        </a>
-        <i class="fas fa-download"></i>
-    </button>
+    <div id="search-settings" class="d-flex justify-content-center">
+        <div class="mr-3">
+            <span>Fetch count</span>
+            <select class="form-control" id="search-fetch-count">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <button id="search-more-articles-button" class="btn btn-primary p-3">
+            <a href="{% url 'load_more_search_results' %}" class="text-light font-weight-bold h5">
+                Load more
+            </a>
+            <i class="fas fa-download"></i>
+        </button>
+    </div>
 </div>
