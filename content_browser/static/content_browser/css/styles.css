@@ -9,6 +9,10 @@
     grid-row: 1 / -1;
 }
 
+.article-card-body{
+    justify-content: space-evenly;
+}
+
 #search-results-container .nothing-was-searched-message{
     grid-column: 1 / -1;
 }
