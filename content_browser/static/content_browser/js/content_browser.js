@@ -65,9 +65,6 @@ class ContentBrowser {
     }
 
     search_articles(query_string) {
-        this.search_results_container.html('');
-        this.last_search_query_string = query_string;
-
         $.ajax({
             type: "GET",
             url: "/search",
@@ -77,8 +74,21 @@ class ContentBrowser {
             },
             dataType: "html",
             success: (response) => {
+                this.last_search_query_string = query_string;
+
                 this.activate_tab("search-results");
+                this.search_results_container.html('');
                 this.search_results_container.append(response);
+            },
+            statusCode: {
+                404: (response) => {
+                    $("#no-search-results-message").text(response.responseText);
+                    $("#no-search-results-message").toggleClass("d-none show");
+
+                    setTimeout(() => {
+                        $("#no-search-results-message").toggleClass("d-none show");
+                    }, 3000);
+                }
             }
         });
     }

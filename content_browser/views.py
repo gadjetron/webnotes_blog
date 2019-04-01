@@ -35,8 +35,12 @@ def search(request):
 
     search_results = Article.objects.filter(header__icontains=query_string)[:fetch_count]
 
-    return render(request, 'content_browser/articles_batch_response.html',
-                  {'articles': search_results})
+    if search_results.exists():
+        return render(request, 'content_browser/articles_batch_response.html',
+                    {'articles': search_results})
+    else:
+        return HttpResponse("No results for query '%s'" % query_string,
+                            status="404")
 
 
 def search_more(request):
